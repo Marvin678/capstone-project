@@ -3,10 +3,11 @@ import {useState} from 'react';
 
 export default function Searchfield() {
 	const [searchTerm, setSearchTerm] = useState('');
-	const [data, setData] = useState();
+	const [data, setData] = useState(null);
+	console.log(data);
 	async function searchCuisine() {
 		const response = await fetch(
-			`https://api.spoonacular.com/recipes/complexSearch?cuisine=${searchTerm}&apiKey=19a30b1279bb483a9f57134487817c93`
+			`https://api.spoonacular.com/recipes/complexSearch?cuisine=${searchTerm}&apiKey=${process.env.NEXT_PUBLIC_SPOONACULAR_API_KEY}`
 		);
 		const json = await response.json();
 
