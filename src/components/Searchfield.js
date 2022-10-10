@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import {useState} from 'react';
 export default function Searchfield() {
@@ -12,6 +13,10 @@ export default function Searchfield() {
 
 		setData(json);
 	}
+
+	const refreshPage = () => {
+		window.location.reload();
+	};
 
 	return (
 		<>
@@ -37,7 +42,7 @@ export default function Searchfield() {
 						/>
 					</svg>
 				</button>
-				<button onClick="href=Searchfield">
+				<button onClick={refreshPage}>
 					<svg style={{width: '24px', height: '24px'}} viewBox="0 0 24 24">
 						<path fill="currentColor" d="M10,20V14H14V20H19V12H22L12,3L2,12H5V20H10Z" />
 					</svg>
@@ -48,8 +53,17 @@ export default function Searchfield() {
 				return (
 					<div key={result.id}>
 						<h2>{result.title}</h2>
+
+						{
+							<Image
+								src={result.image}
+								alt={result.id}
+								width="200px"
+								height="200px"
+							></Image>
+						}
 						<p>Image: {result.image}</p>
-						<Link href={`Details'${result.id}`}>Show Details</Link>
+						<Link href={`details/${result.id}`}>Show Details</Link>
 					</div>
 				);
 			})}
