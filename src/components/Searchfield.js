@@ -62,7 +62,7 @@ export default function Searchfield() {
 								height="200px"
 							></Image>
 						}
-						<p>Image: {result.image}</p>
+						<p>Image: {result.Image}</p>
 						<Link href={`details/${result.id}`}>Show Details</Link>
 					</div>
 				);
